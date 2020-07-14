@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Leaf.xNet;
@@ -46,11 +48,8 @@ namespace Raschot.Worcer
         public void ParsDataAuth() 
         {
             var GetAuths = GetAuth();
-            cityPickupId = System.Text.RegularExpressions.Regex.Match(GetAuths.ToString(), "name=\"cityPickupId\" value=\"(.*?)\"").Groups[1].Value;
-            cityDeliveryId = System.Text.RegularExpressions.Regex.Match(GetAuths.ToString(), "name=\"cityDeliveryId\" value=\"(.*?)\"").Groups[1].Value;
-            Cookie = GetAuths.Cookies.GetCookieHeader("https://www.dpd.ru/ols/calc/calc.do2");
-
             
+            Cookie = GetAuths.Cookies.GetCookieHeader("https://www.dpd.ru/ols/calc/calc.do2");                      
 
         }
 
@@ -64,50 +63,79 @@ namespace Raschot.Worcer
             request.KeepAlive = true;
 
             RequestParams Params = new RequestParams();
-            Params["	form.cityPickupId	"] = cityPickupId;
-            Params["	form.cityDeliveryId	"] = cityDeliveryId;
-            Params["	form.cityPickupCountryCode	"] = "ru";
-            Params["	form.cityDeliveryCountryCode	"] = "ru";
-            //Params["	form.cityPickupNameFull	"] = cityPickupNameFull;
-            //Params["	form.cityDeliveryNameFull	"] = cityDeliveryNameFull;
-            Params["	form.cityPickupNameTotal	"] = cityPickupNameTotal;
-            Params["	form.cityDeliveryNameTotal	"] = cityDeliveryNameTotal;
-            Params["	serverCountryCode	"] = "ru";
-            Params["	form.cityPickupName	"] = cityPickupNameTotal;
-            Params["	form.cityPickupType	"] = "0";
-            Params["	form.cityDeliveryName	"] = cityDeliveryNameTotal;
-            Params["	form.cityDeliveryType	"] = "0";
-            Params["	form.dependantProducts	"] = "CSM,MXO";
-            Params["	form.iamOnlineStoreStatus	"] = "0";
-            Params["	form.weightStr	"] = weightStr;
-            Params["	form.volumeStr	"] = volumeStr;
-            Params["	form.parcelLimits.maxLength	"] = "350";
-            Params["	form.parcelLimits.maxWidth	"] = "160";
-            Params["	form.parcelLimits.maxHeight	"] = "180";
-            Params["	form.parcelLimits.maxWeight	"] = "1000";
-            Params["	form.maxDeclaredCost	"] = "30000000";
-            Params["	form.deliveryPeriodId	"] = "191696130";
+            Params["method: calc:"] ="";
+            Params["direction:"] = "";
+
+
+            Params["form.cityPickupId"] = cityPickupId;
+            Params["form.cityDeliveryId"] = cityDeliveryId;
+            Params["form.cityPickupCountryCode"] = "ru";
+            Params["form.cityDeliveryCountryCode"] = "ru";
+            Params["form.cityPickupNameFull"] = "г. Екатеринбург";
+            Params["form.cityDeliveryNameFull"] = "г. Москва, 101000";
+            Params["form.cityPickupNameTotal"] = cityPickupNameTotal;
+            Params["form.cityDeliveryNameTotal"] = cityDeliveryNameTotal;
+            Params["serverCountryCode"] = "ru";
+            Params["form.cityPickupName"] = cityPickupNameTotal;
+            Params["form.cityPickupType"] = "0";
+            Params["form.cityDeliveryName"] = cityDeliveryNameTotal;
+            Params["form.cityDeliveryType"] = "0";
+            Params["form.dependantProducts"] = "CSM,MXO";
+            Params["form.iamOnlineStoreStatus"] = "0";
+            Params["form.weightStr"] = weightStr;
+            Params["form.volumeStr"] = volumeStr;
+            Params["form.parcelLimits.maxLength"] = "350";
+            Params["form.parcelLimits.maxWidth"] = "160";
+            Params["form.parcelLimits.maxHeight"] = "180";
+            Params["form.parcelLimits.maxWeight"] = "1000";
+            Params["form.deliveryPeriodId"] = "";
+            Params["form.maxDeclaredCost"] = "30000000";
+            Params["form.deliveryPeriodId"] = "";
 
 
 
-                string response = request.Post("https://www.dpd.ru/ols/calc/calc.do2", Params).ToString();
+            string response = request.Post("https://www.dpd.ru/ols/calc/calc.do2", Params).ToString();
             Cookie = request.Cookies.GetCookieHeader("https://www.dpd.ru/ols/calc/calc.do2");
+           
+                    Console.WriteLine(response.ToString());
+           
             return response;
-            
-        }
-
-        public int Chek(string respons)
-        {
-            int Otvet = 0;
-            if (System.Text.RegularExpressions.Regex.Match(respons, "Notifier.init((.*))").Groups[1].Value.Length > 0)
-                Otvet = 1;
-            else
-                Otvet = 0;
-            return Otvet;
-
         }
 
 
-        
+       
+
+
     }
+
 }
+//private static async Task PostRequestAsync()
+//{
+//    WebRequest request = WebRequest.Create("http://localhost:5374/Home/PostData");
+//    request.Method = "POST"; // для отправки используется метод Post
+//    // данные для отправки
+//    string data = "sName=Hello world!";
+//    // преобразуем данные в массив байтов
+//    byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(data);
+//    // устанавливаем тип содержимого - параметр ContentType
+//    request.ContentType = "application/x-www-form-urlencoded";
+//    // Устанавливаем заголовок Content-Length запроса - свойство ContentLength
+//    request.ContentLength = byteArray.Length;
+             
+//    //записываем данные в поток запроса
+//    using (Stream dataStream = request.GetRequestStream())
+//    {
+//        dataStream.Write(byteArray, 0, byteArray.Length);
+//    }
+ 
+//    WebResponse response = await request.GetResponseAsync();
+//    using (Stream stream = response.GetResponseStream())
+//    {
+//        using (StreamReader reader = new StreamReader(stream))
+//        {
+//            Console.WriteLine(reader.ReadToEnd());
+//        }
+//    }
+//    response.Close();
+//    Console.WriteLine("Запрос выполнен...");
+//}

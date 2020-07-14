@@ -46,9 +46,9 @@ namespace Raschot
             var auth = new Worcer.PGAunten(cityPickupNameTotal.Text, cityDeliveryNameTotal.Text, weightStr.Text, volumeStr.Text);
             auth.ParsDataAuth();
             string GetInfo = auth.Auch();
-            
+
         }
 
-      
+     
     }
 }
