@@ -7,12 +7,12 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Leaf.xNet;
+
 namespace Raschot.Worcer
 {
-    class PGAunten
+    class PGAunten2
     {
-        private string cityPickupId { get; set; }
-        private string cityDeliveryId { get; set; }
+   
    
         private string cityPickupNameTotal { get; set; }
         private string cityDeliveryNameTotal { get; set; }
@@ -24,7 +24,7 @@ namespace Raschot.Worcer
 
         private string Cookie { get; set; }
 
-        public PGAunten(string cityPickupNameTotal,string cityDeliveryNameTotal,string weightStr,string volumeStr)
+        public PGAunten2(string cityPickupNameTotal,string cityDeliveryNameTotal,string weightStr,string volumeStr)
         {
           
             this.cityPickupNameTotal = cityPickupNameTotal;
@@ -67,8 +67,8 @@ namespace Raschot.Worcer
             Params["direction:"] = "";
 
 
-            Params["form.cityPickupId"] = cityPickupId;
-            Params["form.cityDeliveryId"] = cityDeliveryId;
+            Params["form.cityPickupId"] = "48999207";
+            Params["form.cityDeliveryId"] = "49698502";
             Params["form.cityPickupCountryCode"] = "ru";
             Params["form.cityDeliveryCountryCode"] = "ru";
             Params["form.cityPickupNameFull"] = "г. Екатеринбург";
@@ -97,8 +97,7 @@ namespace Raschot.Worcer
             string response = request.Post("https://www.dpd.ru/ols/calc/calc.do2", Params).ToString();
             Cookie = request.Cookies.GetCookieHeader("https://www.dpd.ru/ols/calc/calc.do2");
            
-                    Console.WriteLine(response.ToString());
-           
+                    
             return response;
         }
 

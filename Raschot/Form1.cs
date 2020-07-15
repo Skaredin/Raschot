@@ -43,7 +43,7 @@ namespace Raschot
         private void button1_Click(object sender, EventArgs e)
         {
 
-            var auth = new Worcer.PGAunten(cityPickupNameTotal.Text, cityDeliveryNameTotal.Text, weightStr.Text, volumeStr.Text);
+            var auth = new Worcer.PGAunten2(cityPickupNameTotal.Text, cityDeliveryNameTotal.Text, weightStr.Text, volumeStr.Text);
             auth.ParsDataAuth();
             string GetInfo = auth.Auch();
 
