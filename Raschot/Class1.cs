@@ -71,7 +71,7 @@ namespace Raschot.ff
             request.KeepAlive = true;
 
             RequestParams Params = new RequestParams();
-        ;
+        
 
             Params["city1"] = city1;
             Params["city1_id"] = city1_id;
@@ -88,8 +88,8 @@ namespace Raschot.ff
 
 
 
-
             string response = request.Post("https://calculator-dostavki.ru/", Params).ToString();
+                
             Cookie = request.Cookies.GetCookieHeader("https://calculator-dostavki.ru");
 
 
