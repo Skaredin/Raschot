@@ -153,7 +153,44 @@
             "Белгород",
             "Белово",
             "Бийск",
-            "Биробиджан"});
+            "Биробиджан",
+            "Бишкек",
+            "Благовещенск",
+            "Братск",
+            "Брянск",
+            "Великий Новгород",
+            "Владивосток",
+            "Владикавказ",
+            "Владимир",
+            "Волгоград",
+            "Волгодонск",
+            "Волжский",
+            "Вологда",
+            "Воркута",
+            "Воронеж",
+            "Геленджик",
+            "Дзержинск",
+            "Донецк",
+            "Дубна",
+            "Евпатория",
+            "Екатеринбург",
+            "Ереван",
+            "Иваново",
+            "Ижевск",
+            "Инта",
+            "Иркутск",
+            "Йошкар-Ола",
+            "Казань",
+            "Калининград",
+            "Калуга",
+            "Каменск-Уральский",
+            "Каменск-Шахтинский",
+            "Караганда",
+            "Кемерово",
+            "Керчь",
+            "Киров",
+            "Комсомольск-на-Амуре",
+            "Костанай"});
             this.city1.Location = new System.Drawing.Point(12, 62);
             this.city1.Name = "city1";
             this.city1.Size = new System.Drawing.Size(121, 21);
@@ -177,7 +214,44 @@
             "Белгород",
             "Белово",
             "Бийск",
-            "Биробиджан"});
+            "Биробиджан",
+            "Бишкек",
+            "Благовещенск",
+            "Братск",
+            "Брянск",
+            "Великий Новгород",
+            "Владивосток",
+            "Владикавказ",
+            "Владимир",
+            "Волгоград",
+            "Волгодонск",
+            "Волжский",
+            "Вологда",
+            "Воркута",
+            "Воронеж",
+            "Геленджик",
+            "Дзержинск",
+            "Донецк",
+            "Дубна",
+            "Евпатория",
+            "Екатеринбург",
+            "Ереван",
+            "Иваново",
+            "Ижевск",
+            "Инта",
+            "Иркутск",
+            "Йошкар-Ола",
+            "Казань",
+            "Калининград",
+            "Калуга",
+            "Каменск-Уральский",
+            "Каменск-Шахтинский",
+            "Караганда",
+            "Кемерово",
+            "Керчь",
+            "Киров",
+            "Комсомольск-на-Амуре",
+            "Костанай"});
             this.city2.Location = new System.Drawing.Point(139, 62);
             this.city2.Name = "city2";
             this.city2.Size = new System.Drawing.Size(121, 21);
@@ -224,9 +298,9 @@
             this.label1.Location = new System.Drawing.Point(28, 91);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.Size = new System.Drawing.Size(94, 13);
             this.label1.TabIndex = 56;
-            this.label1.Text = "Длина груза (м)\t";
+            this.label1.Text = "Длина груза (см)\t";
             // 
             // label2
             // 
@@ -234,9 +308,9 @@
             this.label2.Location = new System.Drawing.Point(153, 91);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 13);
+            this.label2.Size = new System.Drawing.Size(100, 13);
             this.label2.TabIndex = 57;
-            this.label2.Text = "Ширина груза (м)\t";
+            this.label2.Text = "Ширина груза (см)\t";
             // 
             // label6
             // 
@@ -244,9 +318,9 @@
             this.label6.Location = new System.Drawing.Point(279, 91);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 13);
+            this.label6.Size = new System.Drawing.Size(99, 13);
             this.label6.TabIndex = 58;
-            this.label6.Text = "Высота груза (м)\t";
+            this.label6.Text = "Высота груза (см)\t";
             // 
             // checkBox1
             // 
